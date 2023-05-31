@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Latvija_apdzivotas_vietas.props" />
+</Project>

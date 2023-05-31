@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Latvija_apdzivotas_vietas/1.0.0": {
+        "runtime": {
+          "Latvija_apdzivotas_vietas.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Latvija_apdzivotas_vietas/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
