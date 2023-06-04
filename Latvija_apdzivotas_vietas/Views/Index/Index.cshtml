@@ -1,0 +1,47 @@
+﻿@using Latvija_apdzivotas_vietas.Controllers;
+@using Latvija_apdzivotas_vietas.Models;
+
+@model IEnumerable<LocalityModel>
+@{
+    ViewData["Title"] = "Home page";
+}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome!!!</h1>
+</div>
+
+<div id="map" style="height: 700px; width: 1500px"></div>
+
+<script>
+    var map = L.map('map').setView([56.765, 24.747], 8);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([56.765, 24.747]).addTo(map)
+        .bindPopup('Here is Latvia!')
+        .openPopup();
+</script>
+
+<form asp-controller="Index" asp-action="Index" method="post">
+    <button type="submit">Find some places!</button>
+</form>
+
+@if(Model.Count() > 0)
+{
+    foreach(LocalityModel localities in Model)
+    {
+        <tr>
+            <p>Nosaukums: @localities.Title</p>
+            <p>X koordinate: @localities.Coord_X</p>
+            <p>Y koordinate: @localities.Coord_Y</p>
+        </tr>
+    }
+}

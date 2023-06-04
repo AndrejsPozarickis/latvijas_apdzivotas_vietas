@@ -52,7 +52,6 @@ C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\D
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\scopedcss\bundle\Latvija_apdzivotas_vietas.styles.css
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\scopedcss\projectbundle\Latvija_apdzivotas_vietas.bundle.scp.css
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\Latvija_apdzivotas_vietas.dll
@@ -60,3 +59,6 @@ C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\D
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\Latvija_apdzivotas_vietas.pdb
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\Latvija_apdzivotas_vietas.genruntimeconfig.cache
 C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\ref\Latvija_apdzivotas_vietas.dll
+C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\bin\Debug\net6.0\CsvHelper.dll
+C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\Latvija_apdzivotas_vietas.csproj.CopyComplete
+C:\Users\Андрей\latvijas_apdzivotas_vietas\Latvija_apdzivotas_vietas\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
