@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "nxbzGiXKrB8shVkW93oGJ+aK7Pe+LKBizllibtm2V8sjnDTHvO1mlXP53+SADL80PIf43my0AJBS9WX/w9kM7Q==",
+  "dgSpecHash": "S7nyFT9EkAv7Pqf2IyFOEudl69bhCRGco8744IChZpGMiA6gwE2kgbK2qYUzZuU4J5HEwUgkLcbA7BJ1r3FhnQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Андрей\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
+  "projectFilePath": "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Андрей\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
+    "C:\\Users\\Andrejs\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512"
   ],
   "logs": []
 }

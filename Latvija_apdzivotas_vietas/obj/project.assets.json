@@ -49,24 +49,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Андрей\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Andrejs\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Андрей\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
+      "projectUniqueName": "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
       "projectName": "Latvija_apdzivotas_vietas",
-      "projectPath": "C:\\Users\\Андрей\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
-      "packagesPath": "C:\\Users\\Андрей\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Андрей\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\obj\\",
+      "projectPath": "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
+      "packagesPath": "C:\\Users\\Andrejs\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Андрей\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Andrejs\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -74,6 +69,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -116,7 +112,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

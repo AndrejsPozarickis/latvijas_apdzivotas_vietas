@@ -1,5 +1,6 @@
 ﻿@using Latvija_apdzivotas_vietas.Controllers;
 @using Latvija_apdzivotas_vietas.Models;
+@using Latvija_apdzivotas_vietas.Services;
 
 @model IEnumerable<LocalityModel>
 @{
@@ -34,6 +35,10 @@
     <button type="submit">Find some places!</button>
 </form>
 
+<form asp-controller="Index" asp-action="GetRemoteLocalities" method="post">
+    <button type="submit">Find remote places!</button>
+</form>
+
 @if(Model.Count() > 0)
 {
     foreach(LocalityModel localities in Model)
@@ -42,6 +47,24 @@
             <p>Nosaukums: @localities.Title</p>
             <p>X koordinate: @localities.Coord_X</p>
             <p>Y koordinate: @localities.Coord_Y</p>
+            <p>DD_N: @localities.DD_N</p>
+            <p>DD_E: @localities.DD_E</p>
         </tr>
     }
+}
+
+@if(ViewBag.RemoteLocalities > 0) 
+{
+    <script>
+        var map = L.map('map').setView([56.765, 24.747], 8);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        foreach()
+        L.marker([56.765, 24.747]).addTo(map)
+            .bindPopup('Here is Latvia!')
+            .openPopup();
+    </script>
 }

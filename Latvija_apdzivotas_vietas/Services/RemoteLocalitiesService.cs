@@ -10,7 +10,7 @@ namespace Latvija_apdzivotas_vietas.Services
             return str;
         }
 
-        public List<LocalityModel> FindRemoteLocalities(List<LocalityModel> list)
+        public MostRemoteLocalities[] FindRemoteLocalities(List<LocalityModel> list)
         {
             MostRemoteLocalities[] remoteLocalities = new MostRemoteLocalities[3];
 
@@ -18,57 +18,57 @@ namespace Latvija_apdzivotas_vietas.Services
             {
                 // get away from #
                 el.Title = StrFormat(el.Title);
-                el.Coord_X = StrFormat(el.Coord_X);
-                el.Coord_Y = StrFormat(el.Coord_Y);
+                el.DD_E = StrFormat(el.DD_E);
+                el.DD_N = StrFormat(el.DD_N);
 
                 if (remoteLocalities.Length > 0)
                 {
-                    if(Convert.ToDouble(el.Coord_Y) > remoteLocalities[0].Y)
+                    if(Convert.ToDouble(el.DD_N) > remoteLocalities[0].N)
                     {
-                        remoteLocalities[0].Y = Convert.ToDouble(el.Coord_Y);
+                        remoteLocalities[0].N = Convert.ToDouble(el.DD_N);
                     }
-                    if (Convert.ToDouble(el.Coord_X) > remoteLocalities[0].X)
+                    if (Convert.ToDouble(el.DD_E) > remoteLocalities[1].E)
                     {
-                        remoteLocalities[0].X = Convert.ToDouble(el.Coord_X);
+                        remoteLocalities[1].E = Convert.ToDouble(el.DD_E);
                     }
-                    if (Convert.ToDouble(el.Coord_Y) < remoteLocalities[0].Y)
+                    if (Convert.ToDouble(el.DD_N) < remoteLocalities[2].N)
                     {
-                        remoteLocalities[0].Y = Convert.ToDouble(el.Coord_Y);
+                        remoteLocalities[2].N = Convert.ToDouble(el.DD_N);
                     }
-                    if (Convert.ToDouble(el.Coord_X) < remoteLocalities[0].X)
+                    if (Convert.ToDouble(el.DD_E) < remoteLocalities[3].E)
                     {
-                        remoteLocalities[0].X = Convert.ToDouble(el.Coord_X);
+                        remoteLocalities[3].E = Convert.ToDouble(el.DD_E);
                     }
                 } 
                 else
                 {
                     #region Defaults
                     remoteLocalities[0].Direction = 'Z';
-                    remoteLocalities[0].X = Convert.ToDouble(el.Coord_X);
-                    remoteLocalities[0].Y = Convert.ToDouble(el.Coord_Y);
+                    remoteLocalities[0].E = Convert.ToDouble(el.DD_E);
+                    remoteLocalities[0].N = Convert.ToDouble(el.DD_N);
 
-                    remoteLocalities[0].Direction = 'A';
-                    remoteLocalities[0].X = Convert.ToDouble(el.Coord_X);
-                    remoteLocalities[0].Y = Convert.ToDouble(el.Coord_Y);
+                    remoteLocalities[1].Direction = 'A';
+                    remoteLocalities[1].E = Convert.ToDouble(el.DD_E);
+                    remoteLocalities[1].N = Convert.ToDouble(el.DD_N);
 
-                    remoteLocalities[0].Direction = 'D';
-                    remoteLocalities[0].X = Convert.ToDouble(el.Coord_X);
-                    remoteLocalities[0].Y = Convert.ToDouble(el.Coord_Y);
+                    remoteLocalities[2].Direction = 'D';
+                    remoteLocalities[2].E = Convert.ToDouble(el.DD_E);
+                    remoteLocalities[2].N = Convert.ToDouble(el.DD_N);
 
-                    remoteLocalities[0].Direction = 'R';
-                    remoteLocalities[0].X = Convert.ToDouble(el.Coord_X);
-                    remoteLocalities[0].Y = Convert.ToDouble(el.Coord_Y);
+                    remoteLocalities[3].Direction = 'R';
+                    remoteLocalities[3].E = Convert.ToDouble(el.DD_E);
+                    remoteLocalities[3].N = Convert.ToDouble(el.DD_N);
                     #endregion
                 }
             }
 
-            return list;
+            return remoteLocalities;
         }
     }
 
     public class MostRemoteLocalities {
         public char Direction { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
+        public double E { get; set; }
+        public double N { get; set; }
     }
 }
