@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj": {}
+    "D:\\source\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj": {
+    "D:\\source\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
+        "projectUniqueName": "D:\\source\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
         "projectName": "Latvija_apdzivotas_vietas",
-        "projectPath": "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
-        "packagesPath": "C:\\Users\\Andrejs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrejs\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\obj\\",
+        "projectPath": "D:\\source\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\Latvija_apdzivotas_vietas.csproj",
+        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+        "outputPath": "D:\\source\\latvijas_apdzivotas_vietas\\Latvija_apdzivotas_vietas\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Andrejs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

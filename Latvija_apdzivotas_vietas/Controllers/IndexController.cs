@@ -72,13 +72,14 @@ namespace Latvija_apdzivotas_vietas.Controllers
         {
             var remoteLocalities = new RemoteLocalitiesService();
 
-            List<LocalityModel> list = (List<LocalityModel>)_csvService.ReadCSV<LocalityModel>(Directory.GetCurrentDirectory() + "AW_VIETU_CENTROIDI.CSV");
+            List<LocalityModel> list = (List<LocalityModel>)_csvService.ReadCSV<LocalityModel>(Directory.GetCurrentDirectory() + "\\" + "AW_VIETU_CENTROIDI.CSV");
 
             var response = remoteLocalities.FindRemoteLocalities(list);
 
             ViewBag.RemoteLocalities = response;
+            ViewData["RemoteLocality"] = (RemoteLocalityModel)response;
 
-            return View();
+            return View("Index");
         }
     }
 }

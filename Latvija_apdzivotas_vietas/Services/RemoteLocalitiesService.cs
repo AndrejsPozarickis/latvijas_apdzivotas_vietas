@@ -6,13 +6,22 @@ namespace Latvija_apdzivotas_vietas.Services
     {
         private String StrFormat(string str)
         {
-            str = str.Substring(str.IndexOf("#"), str.Length - 1);
+            str = str.Split('#', '#')[1];
+
+            // depending on the regional settings Convert.ToDouble can not accept double with ","
+            // if you have an error about incorrect format, comment out the code below:
+            bool startWithNum = char.IsDigit(str[0]);
+            if(startWithNum)
+            {
+                str = str.Replace('.', ',');
+            }
+
             return str;
         }
 
-        public MostRemoteLocalities[] FindRemoteLocalities(List<LocalityModel> list)
+        public List<RemoteLocalityModel> FindRemoteLocalities(List<LocalityModel> list)
         {
-            MostRemoteLocalities[] remoteLocalities = new MostRemoteLocalities[3];
+            List<RemoteLocalityModel> remoteLocalities = new List<RemoteLocalityModel>();
 
             foreach (var el in list)
             {
@@ -21,54 +30,57 @@ namespace Latvija_apdzivotas_vietas.Services
                 el.DD_E = StrFormat(el.DD_E);
                 el.DD_N = StrFormat(el.DD_N);
 
-                if (remoteLocalities.Length > 0)
+                if (remoteLocalities.Any())
                 {
-                    if(Convert.ToDouble(el.DD_N) > remoteLocalities[0].N)
+                    if(Convert.ToDouble(el.DD_N) > remoteLocalities[0].North)
                     {
-                        remoteLocalities[0].N = Convert.ToDouble(el.DD_N);
+                        remoteLocalities[0].North = Convert.ToDouble(el.DD_N);
                     }
-                    if (Convert.ToDouble(el.DD_E) > remoteLocalities[1].E)
+                    if (Convert.ToDouble(el.DD_E) > remoteLocalities[1].East)
                     {
-                        remoteLocalities[1].E = Convert.ToDouble(el.DD_E);
+                        remoteLocalities[1].East = Convert.ToDouble(el.DD_E);
                     }
-                    if (Convert.ToDouble(el.DD_N) < remoteLocalities[2].N)
+                    if (Convert.ToDouble(el.DD_N) < remoteLocalities[2].North)
                     {
-                        remoteLocalities[2].N = Convert.ToDouble(el.DD_N);
+                        remoteLocalities[2].North = Convert.ToDouble(el.DD_N);
                     }
-                    if (Convert.ToDouble(el.DD_E) < remoteLocalities[3].E)
+                    if (Convert.ToDouble(el.DD_E) < remoteLocalities[3].East)
                     {
-                        remoteLocalities[3].E = Convert.ToDouble(el.DD_E);
+                        remoteLocalities[3].East = Convert.ToDouble(el.DD_E);
                     }
                 } 
                 else
                 {
                     #region Defaults
-                    remoteLocalities[0].Direction = 'Z';
-                    remoteLocalities[0].E = Convert.ToDouble(el.DD_E);
-                    remoteLocalities[0].N = Convert.ToDouble(el.DD_N);
-
-                    remoteLocalities[1].Direction = 'A';
-                    remoteLocalities[1].E = Convert.ToDouble(el.DD_E);
-                    remoteLocalities[1].N = Convert.ToDouble(el.DD_N);
-
-                    remoteLocalities[2].Direction = 'D';
-                    remoteLocalities[2].E = Convert.ToDouble(el.DD_E);
-                    remoteLocalities[2].N = Convert.ToDouble(el.DD_N);
-
-                    remoteLocalities[3].Direction = 'R';
-                    remoteLocalities[3].E = Convert.ToDouble(el.DD_E);
-                    remoteLocalities[3].N = Convert.ToDouble(el.DD_N);
+                    remoteLocalities.Add( new RemoteLocalityModel
+                    {
+                        Direction = 'Z',
+                        East = Convert.ToDouble(el.DD_E),
+                        North = Convert.ToDouble(el.DD_N)
+                    });
+                    remoteLocalities.Add(new RemoteLocalityModel
+                    {
+                        Direction = 'A',
+                        East = Convert.ToDouble(el.DD_E),
+                        North = Convert.ToDouble(el.DD_N)
+                    });
+                    remoteLocalities.Add(new RemoteLocalityModel
+                    {
+                        Direction = 'D',
+                        East = Convert.ToDouble(el.DD_E),
+                        North = Convert.ToDouble(el.DD_N)
+                    });
+                    remoteLocalities.Add(new RemoteLocalityModel
+                    {
+                        Direction = 'R',
+                        East = Convert.ToDouble(el.DD_E),
+                        North = Convert.ToDouble(el.DD_N)
+                    });
                     #endregion
                 }
             }
 
             return remoteLocalities;
         }
-    }
-
-    public class MostRemoteLocalities {
-        public char Direction { get; set; }
-        public double E { get; set; }
-        public double N { get; set; }
     }
 }

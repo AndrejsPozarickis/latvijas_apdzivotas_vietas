@@ -2,7 +2,7 @@
 @using Latvija_apdzivotas_vietas.Models;
 @using Latvija_apdzivotas_vietas.Services;
 
-@model IEnumerable<LocalityModel>
+@model IEnumerable<RemoteLocalityModel>
 @{
     ViewData["Title"] = "Home page";
 }
@@ -17,7 +17,7 @@
     <h1 class="display-4">Welcome!!!</h1>
 </div>
 
-<div id="map" style="height: 700px; width: 1500px"></div>
+<div id="map" style="height: 700px; width: 1500px" runat="server"></div>
 
 <script>
     var map = L.map('map').setView([56.765, 24.747], 8);
@@ -29,7 +29,20 @@
     L.marker([56.765, 24.747]).addTo(map)
         .bindPopup('Here is Latvia!')
         .openPopup();
+
+    var model = @Model;
+
+    if(model != null) {
+        var count = @Model.Count();
+
+        for (let i = 0; i < count; i++) {
+            L.marker([@Model.North, 24.747]).addTo(map)
+                .bindPopup()
+                .openPopup();
+        }
+    }
 </script>
+
 
 <form asp-controller="Index" asp-action="Index" method="post">
     <button type="submit">Find some places!</button>
@@ -39,7 +52,7 @@
     <button type="submit">Find remote places!</button>
 </form>
 
-@if(Model.Count() > 0)
+@*@if (Model != null && Model.Count() > 0)
 {
     foreach(LocalityModel localities in Model)
     {
@@ -51,20 +64,24 @@
             <p>DD_E: @localities.DD_E</p>
         </tr>
     }
-}
+}*@
 
-@if(ViewBag.RemoteLocalities > 0) 
-{
+@*@if(ViewBag.RemoteLocalities != null)  {
     <script>
-        var map = L.map('map').setView([56.765, 24.747], 8);
+            map = L.map("map").setView([56.765, 24.747], 8);
 
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+            }).addTo(map);
 
-        foreach()
-        L.marker([56.765, 24.747]).addTo(map)
-            .bindPopup('Here is Latvia!')
-            .openPopup();
+            
+
+        console.log(remoteLocalities);
+
+            remoteLocalities.forEach((currentElement) => {
+            L.marker([currentElement.North, currentElement.East]).addTo(map)
+                .bindPopup()
+                .openPopup();
+            });   
     </script>
-}
+}*@
