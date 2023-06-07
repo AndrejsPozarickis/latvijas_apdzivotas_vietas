@@ -77,7 +77,7 @@ namespace Latvija_apdzivotas_vietas.Controllers
             var response = remoteLocalities.FindRemoteLocalities(list);
 
             ViewBag.RemoteLocalities = response;
-            ViewData["RemoteLocality"] = (RemoteLocalityModel)response;
+            //ViewData["RemoteLocality"] = (RemoteLocalityModel)response;
 
             return View("Index");
         }
