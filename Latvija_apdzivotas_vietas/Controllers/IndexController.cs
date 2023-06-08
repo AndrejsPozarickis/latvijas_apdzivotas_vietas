@@ -19,9 +19,9 @@ namespace Latvija_apdzivotas_vietas.Controllers
 
 
         [HttpGet]
-        public IActionResult Index(List<LocalityModel>? localities = null)
+        public IActionResult Index(List<RemoteLocalityModel>? localities = null)
         {
-            var response = localities == null ? new List<LocalityModel>() : localities;
+            var response = localities == null ? new List<RemoteLocalityModel>() : localities;
 
             return View(response);
         }
@@ -37,9 +37,10 @@ namespace Latvija_apdzivotas_vietas.Controllers
                     string filename = "archive.zip"; 
                     wc.DownloadFile("https://data.gov.lv/dati/dataset/0c5e1a3b-0097-45a9-afa9-7f7262f3f623/resource/1d3cbdf2-ee7d-4743-90c7-97d38824d0bf/download/aw_csv.zip.", filename); // NOTE: could add a file extension here
 
-                    var response = GetLocalitiesData(filename);
+                    //var response = GetLocalitiesData(filename);
 
-                    return Index(response);
+                    //return Index(response);
+                    return Index();
                 }
                 catch (System.Exception ex)
                 {
@@ -68,7 +69,8 @@ namespace Latvija_apdzivotas_vietas.Controllers
             return (List<LocalityModel>)localities;
         }
 
-        public IActionResult GetRemoteLocalities()
+        [HttpPost]
+        public JsonResult GetRemoteLocalities()
         {
             var remoteLocalities = new RemoteLocalitiesService();
 
@@ -76,10 +78,7 @@ namespace Latvija_apdzivotas_vietas.Controllers
 
             var response = remoteLocalities.FindRemoteLocalities(list);
 
-            ViewBag.RemoteLocalities = response;
-            //ViewData["RemoteLocality"] = (RemoteLocalityModel)response;
-
-            return View("Index");
+            return Json(response);
         }
     }
 }

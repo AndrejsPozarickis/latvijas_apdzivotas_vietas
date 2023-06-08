@@ -2,7 +2,7 @@
 {
     public class RemoteLocalityModel
     {
-        public char Direction { get; set; }
+        public string Title { get; set; }
         public double East { get; set; }
         public double North { get; set; }
     }

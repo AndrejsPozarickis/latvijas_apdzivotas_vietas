@@ -2,16 +2,14 @@
 @using Latvija_apdzivotas_vietas.Models;
 @using Latvija_apdzivotas_vietas.Services;
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
 @model IEnumerable<RemoteLocalityModel>
 @{
     ViewData["Title"] = "Home page";
 }
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""></script>
 
 <div class="text-center">
     <h1 class="display-4">Welcome!!!</h1>
@@ -30,17 +28,21 @@
         .bindPopup('Here is Latvia!')
         .openPopup();
 
-    var model = @Model;
+    $(function () {
+        $("#findRemotes").click(function () {
+            $.post("/Index/GetRemoteLocalities",
+                function (response) {
+                    console.log(response);
+                    response.forEach(el => {
+                        L.marker([el.north, el.east]).addTo(map)
+                            .bindPopup(el.title)
+                            .openPopup();
+                    });
+                }
+            );
+        });
+    });
 
-    //if(model != null) {
-    //    var count = Model.Count();
-
-    //    for (let i = 0; i < count; i++) {
-    //        L.marker([Model.North, 24.747]).addTo(map)
-    //            .bindPopup()
-    //            .openPopup();
-    //    }
-    //}
 </script>
 
 
@@ -48,40 +50,5 @@
     <button type="submit">Find some places!</button>
 </form>
 
-<form asp-controller="Index" asp-action="GetRemoteLocalities" method="post">
-    <button type="submit">Find remote places!</button>
-</form>
 
-@*@if (Model != null && Model.Count() > 0)
-{
-    foreach(LocalityModel localities in Model)
-    {
-        <tr>
-            <p>Nosaukums: @localities.Title</p>
-            <p>X koordinate: @localities.Coord_X</p>
-            <p>Y koordinate: @localities.Coord_Y</p>
-            <p>DD_N: @localities.DD_N</p>
-            <p>DD_E: @localities.DD_E</p>
-        </tr>
-    }
-}*@
-
-@*@if(ViewBag.RemoteLocalities != null)  {
-    <script>
-            map = L.map("map").setView([56.765, 24.747], 8);
-
-            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
-            }).addTo(map);
-
-            
-
-        console.log(remoteLocalities);
-
-            remoteLocalities.forEach((currentElement) => {
-            L.marker([currentElement.North, currentElement.East]).addTo(map)
-                .bindPopup()
-                .openPopup();
-            });   
-    </script>
-}*@
+<button id="findRemotes">Find remote places!</button>

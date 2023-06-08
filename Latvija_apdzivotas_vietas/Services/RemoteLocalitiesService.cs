@@ -35,18 +35,26 @@ namespace Latvija_apdzivotas_vietas.Services
                     if(Convert.ToDouble(el.DD_N) > remoteLocalities[0].North)
                     {
                         remoteLocalities[0].North = Convert.ToDouble(el.DD_N);
+                        remoteLocalities[0].East = Convert.ToDouble(el.DD_E);
+                        remoteLocalities[0].Title = el.Title;
                     }
                     if (Convert.ToDouble(el.DD_E) > remoteLocalities[1].East)
                     {
+                        remoteLocalities[1].North = Convert.ToDouble(el.DD_N);
                         remoteLocalities[1].East = Convert.ToDouble(el.DD_E);
+                        remoteLocalities[1].Title = el.Title;
                     }
                     if (Convert.ToDouble(el.DD_N) < remoteLocalities[2].North)
                     {
                         remoteLocalities[2].North = Convert.ToDouble(el.DD_N);
+                        remoteLocalities[2].East = Convert.ToDouble(el.DD_E);
+                        remoteLocalities[2].Title = el.Title;
                     }
                     if (Convert.ToDouble(el.DD_E) < remoteLocalities[3].East)
                     {
+                        remoteLocalities[3].North = Convert.ToDouble(el.DD_N);
                         remoteLocalities[3].East = Convert.ToDouble(el.DD_E);
+                        remoteLocalities[3].Title = el.Title;
                     }
                 } 
                 else
@@ -54,25 +62,25 @@ namespace Latvija_apdzivotas_vietas.Services
                     #region Defaults
                     remoteLocalities.Add( new RemoteLocalityModel
                     {
-                        Direction = 'Z',
+                        Title = el.Title,
                         East = Convert.ToDouble(el.DD_E),
                         North = Convert.ToDouble(el.DD_N)
                     });
                     remoteLocalities.Add(new RemoteLocalityModel
                     {
-                        Direction = 'A',
+                        Title = el.Title,
                         East = Convert.ToDouble(el.DD_E),
                         North = Convert.ToDouble(el.DD_N)
                     });
                     remoteLocalities.Add(new RemoteLocalityModel
                     {
-                        Direction = 'D',
+                        Title = el.Title,
                         East = Convert.ToDouble(el.DD_E),
                         North = Convert.ToDouble(el.DD_N)
                     });
                     remoteLocalities.Add(new RemoteLocalityModel
                     {
-                        Direction = 'R',
+                        Title = el.Title,
                         East = Convert.ToDouble(el.DD_E),
                         North = Convert.ToDouble(el.DD_N)
                     });
