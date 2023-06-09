@@ -6,40 +6,76 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
-@model IEnumerable<RemoteLocalityModel>
+@model IEnumerable<ShortLocalityModel>
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome!!!</h1>
-</div>
+<p>
+    Apdzīvoto vietu nosaukums: <input id="searchString" type="text" />
+    <button id="searchLocalities">Meklēt</button>
+</p>
 
 <div id="map" style="height: 700px; width: 1500px" runat="server"></div>
 
 <script>
-    var map = L.map('map').setView([56.765, 24.747], 8);
+    var map = L.map('map').setView([56.765, 24.747], 7);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.marker([56.765, 24.747]).addTo(map)
-        .bindPopup('Here is Latvia!')
-        .openPopup();
+    var layerGroup = L.layerGroup().addTo(map);
 
     $(function () {
         $("#findRemotes").click(function () {
             $.post("/Index/GetRemoteLocalities",
                 function (response) {
                     console.log(response);
+
+                    map.removeLayer(layerGroup);
+
+                    layerGroup = L.layerGroup().addTo(map);
+
                     response.forEach(el => {
-                        L.marker([el.north, el.east]).addTo(map)
+                        marker = L.marker([el.north, el.east])
                             .bindPopup(el.title)
                             .openPopup();
+                        layerGroup.addLayer(marker);
                     });
+
+                    var overlay = { 'Attālinātas apdzīvotās vietas': layerGroup };
+                    L.control.layers(null, overlay).addTo(map);
                 }
             );
+        });
+    });
+
+    $(function () {
+        $("#searchLocalities").click(function () {
+            var searchStr = $.trim($("#searchString").val());
+            $.ajax({
+                url: '/Index/SearchLocality',
+                data: { searchStr: searchStr }
+            }).done(function (list) {
+                console.log(list);
+
+                map.removeLayer(layerGroup);
+
+                if (list != null) {
+                    layerGroup = L.layerGroup().addTo(map);
+
+                    list.forEach(el => {
+                        marker = L.marker([el.north, el.east])
+                            .bindPopup(el.title)
+                            .openPopup();
+                        layerGroup.addLayer(marker);
+                    });
+
+                    var overlay = { 'Meklēšanas rezultats' : layerGroup };
+                    L.control.layers(null, overlay).addTo(map);
+                }
+            });
         });
     });
 
@@ -47,8 +83,7 @@
 
 
 <form asp-controller="Index" asp-action="Index" method="post">
-    <button type="submit">Find some places!</button>
+    <button type="submit">Get data from server!</button>
 </form>
-
 
 <button id="findRemotes">Find remote places!</button>

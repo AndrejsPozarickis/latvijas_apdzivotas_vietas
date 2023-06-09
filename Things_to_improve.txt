@@ -1,0 +1,7 @@
+Things to improve:
+
+- Not allow to duplicate marker layers
+- Use ajax calls in View only, not two different methods
+- Get string formatting (StrFormat) method somewhere else
+- Add more comments, make code more readable etc.
+- Add some CSS for nicer look to website

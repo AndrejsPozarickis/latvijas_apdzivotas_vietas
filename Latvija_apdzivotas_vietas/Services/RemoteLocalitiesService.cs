@@ -4,7 +4,7 @@ namespace Latvija_apdzivotas_vietas.Services
 {
     public class RemoteLocalitiesService
     {
-        private String StrFormat(string str)
+        public String StrFormat(string str)
         {
             str = str.Split('#', '#')[1];
 
@@ -19,9 +19,9 @@ namespace Latvija_apdzivotas_vietas.Services
             return str;
         }
 
-        public List<RemoteLocalityModel> FindRemoteLocalities(List<LocalityModel> list)
+        public List<ShortLocalityModel> FindRemoteLocalities(List<LocalityModel> list)
         {
-            List<RemoteLocalityModel> remoteLocalities = new List<RemoteLocalityModel>();
+            List<ShortLocalityModel> remoteLocalities = new List<ShortLocalityModel>();
 
             foreach (var el in list)
             {
@@ -60,25 +60,25 @@ namespace Latvija_apdzivotas_vietas.Services
                 else
                 {
                     #region Defaults
-                    remoteLocalities.Add( new RemoteLocalityModel
+                    remoteLocalities.Add( new ShortLocalityModel
                     {
                         Title = el.Title,
                         East = Convert.ToDouble(el.DD_E),
                         North = Convert.ToDouble(el.DD_N)
                     });
-                    remoteLocalities.Add(new RemoteLocalityModel
+                    remoteLocalities.Add(new ShortLocalityModel
                     {
                         Title = el.Title,
                         East = Convert.ToDouble(el.DD_E),
                         North = Convert.ToDouble(el.DD_N)
                     });
-                    remoteLocalities.Add(new RemoteLocalityModel
+                    remoteLocalities.Add(new ShortLocalityModel
                     {
                         Title = el.Title,
                         East = Convert.ToDouble(el.DD_E),
                         North = Convert.ToDouble(el.DD_N)
                     });
-                    remoteLocalities.Add(new RemoteLocalityModel
+                    remoteLocalities.Add(new ShortLocalityModel
                     {
                         Title = el.Title,
                         East = Convert.ToDouble(el.DD_E),
